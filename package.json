@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@emotion/cache": "^11.9.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
+    "@fontsource/montserrat": "^4.5.11",
+    "@fontsource/open-sans": "^4.5.10",
+    "@mui/icons-material": "^5.2.0",
+    "@mui/material": "^5.2.1",
+    "next": "^12.1.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
-    "@types/react": "18.0.15",
+    "@types/react": "^17.0.39",
     "@types/react-dom": "18.0.6",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
