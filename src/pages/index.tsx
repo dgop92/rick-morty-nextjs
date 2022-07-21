@@ -47,7 +47,10 @@ const Home: NextPage = () => {
           <PrimaryButtonLink>Episodes</PrimaryButtonLink>
         </Link>
         <Link href="/characters" passHref>
-          <PrimaryButtonLink>Characters</PrimaryButtonLink>
+          <PrimaryButtonLink>Main characters</PrimaryButtonLink>
+        </Link>
+        <Link href="/characters/1" passHref>
+          <PrimaryButtonLink>Rick info</PrimaryButtonLink>
         </Link>
       </Stack>
     </Stack>

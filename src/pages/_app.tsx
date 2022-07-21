@@ -2,6 +2,7 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
+import apolloClient from "../services/apolloClient";
 
 import "@fontsource/montserrat/300.css";
 import "@fontsource/montserrat/400.css";
@@ -16,6 +17,7 @@ import "@fontsource/open-sans/700.css";
 
 import createEmotionCache from "../styles/createEmotionCache";
 import { muiTheme } from "../styles/theme";
+import { ApolloProvider } from "@apollo/client";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -29,9 +31,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        {/* @ts-ignore */}
-        <Component {...pageProps} />
+        <ApolloProvider client={apolloClient}>
+          <CssBaseline />
+          {/* @ts-ignore */}
+          <Component {...pageProps} />
+        </ApolloProvider>
       </ThemeProvider>
     </CacheProvider>
   );
