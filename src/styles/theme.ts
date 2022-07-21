@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createTheme, alpha } from "@mui/material";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { SxProps } from "@mui/system";

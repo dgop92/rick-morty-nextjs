@@ -15,5 +15,6 @@ export default function ClientOnly({ children }: ClientOnlyProps) {
     return null;
   }
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>;
 }

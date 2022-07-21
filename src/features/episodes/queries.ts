@@ -12,7 +12,7 @@ export const ALL_EPISODES = gql`
       results {
         id
         name
-        air_date
+        airDate: air_date
         episodeSeason: episode
       }
     }

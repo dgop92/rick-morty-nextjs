@@ -5,7 +5,7 @@ import type { NextPage } from "next";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import React from "react";
-import { BasePrimaryButton } from "../components/buttons";
+import { BasePrimaryButton } from "../components/Button";
 
 const PrimaryButton = styled(BasePrimaryButton)<ButtonProps>(({ theme }) => ({
   fontSize: "1rem",
@@ -13,7 +13,7 @@ const PrimaryButton = styled(BasePrimaryButton)<ButtonProps>(({ theme }) => ({
 })) as typeof Button;
 
 // eslint-disable-next-line react/display-name
-const PrimaryButtonLink = React.forwardRef<any, ButtonProps>(
+const PrimaryButtonLink = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ href, ...props }, ref) => {
     return <PrimaryButton href={href} {...props} ref={ref} />;
   }
@@ -21,12 +21,7 @@ const PrimaryButtonLink = React.forwardRef<any, ButtonProps>(
 
 const Home: NextPage = () => {
   return (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-      width="100vw"
-      height="100vh"
-    >
+    <Stack alignItems="center" justifyContent="center" width="100vw" height="100vh">
       <Typography
         variant="h2"
         component="h1"

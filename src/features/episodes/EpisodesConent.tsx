@@ -4,12 +4,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { useQuery } from "@apollo/client";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useQuery } from "@apollo/client";
+import BottomPagination from "./components/BottomPagination";
+import EpisodeCard from "./components/EpisodeCard";
 import { ControlledSelect } from "../../components/Select";
 import { TextField } from "../../components/TextField";
-import BottomPagination from "./BottomPagination";
-import EpisodeCard from "./EpisodeCard";
 import { ALL_EPISODES } from "./queries";
 import { EpisodeResponseData, EpisodeVarsData } from "./types";
 
@@ -18,28 +18,11 @@ interface FilterData {
   season: string;
 }
 
-const seasons = [
-  {
-    text: "Season 1",
-    value: "S01",
-  },
-  {
-    text: "Season 2",
-    value: "S02",
-  },
-  {
-    text: "Season 3",
-    value: "S03",
-  },
-  {
-    text: "Season 4",
-    value: "S04",
-  },
-  {
-    text: "Season 5",
-    value: "S05",
-  },
-];
+const seasonsIds = [1, 2, 3, 4, 5];
+const seasons = seasonsIds.map((id) => ({
+  text: `Season ${id}`,
+  value: `S0${id}`,
+}));
 
 export default function EpisodesConent() {
   const {
@@ -52,12 +35,11 @@ export default function EpisodesConent() {
     notifyOnNetworkStatusChange: true,
   });
 
+  console.log(error);
+
   const episodes = responseData ? responseData.episodes.results : [];
   const nextPage = responseData ? responseData.episodes.info.next : null;
   const prevPage = responseData ? responseData.episodes.info.prev : null;
-
-  console.log(loading);
-  console.log(error);
 
   const onSubmit: SubmitHandler<FilterData> = (data) => {
     refetch({ filter: { name: data.episodeName, episode: data.season } });
@@ -125,11 +107,7 @@ export default function EpisodesConent() {
         </Button>
       </Paper>
 
-      <BottomPagination
-        nextPage={nextPage}
-        prevPage={prevPage}
-        onNewPage={onNewPage}
-      />
+      <BottomPagination nextPage={nextPage} prevPage={prevPage} onNewPage={onNewPage} />
 
       {!loading ? (
         <Box

@@ -1,8 +1,9 @@
 import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
-import apolloClient from "../services/apolloClient";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "../lib/apolloClient";
 
 import "@fontsource/montserrat/300.css";
 import "@fontsource/montserrat/400.css";
@@ -17,9 +18,9 @@ import "@fontsource/open-sans/700.css";
 
 import createEmotionCache from "../styles/createEmotionCache";
 import { muiTheme } from "../styles/theme";
-import { ApolloProvider } from "@apollo/client";
 
 interface MyAppProps extends AppProps {
+  // eslint-disable-next-line react/require-default-props
   emotionCache?: EmotionCache;
 }
 
@@ -33,6 +34,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
       <ThemeProvider theme={muiTheme}>
         <ApolloProvider client={apolloClient}>
           <CssBaseline />
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <Component {...pageProps} />
         </ApolloProvider>

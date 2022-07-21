@@ -9,7 +9,7 @@ interface CharacterDetailProps {
   characterId: string;
 }
 
-export const getStaticPaths: GetStaticPaths = (ctx) => {
+export const getStaticPaths: GetStaticPaths = () => {
   const mainCharactersIds = [1, 2, 3, 4, 5];
   const paths = mainCharactersIds.map((id) => ({
     params: { id: id.toString() },
@@ -21,10 +21,10 @@ export const getStaticPaths: GetStaticPaths = (ctx) => {
   };
 };
 
-export const getStaticProps: GetStaticProps<
-  CharacterDetailProps,
-  IParams
-> = async (ctx) => {
+export const getStaticProps: GetStaticProps<CharacterDetailProps, IParams> = async (
+  ctx
+) => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { id } = ctx.params!;
 
   return {
