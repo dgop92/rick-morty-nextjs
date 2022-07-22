@@ -1,13 +1,13 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import LinearProgress from "@mui/material/LinearProgress";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useQuery } from "@apollo/client";
 import BottomPagination from "./components/BottomPagination";
-import EpisodeCard from "./components/EpisodeCard";
+import { EpisodeCard } from "./components/EpisodeCard";
 import { ControlledSelect } from "../../components/Select";
 import { TextField } from "../../components/TextField";
 import { ALL_EPISODES } from "./queries";
@@ -27,15 +27,12 @@ const seasons = seasonsIds.map((id) => ({
 export default function EpisodesConent() {
   const {
     loading,
-    error,
     data: responseData,
     refetch,
   } = useQuery<EpisodeResponseData, EpisodeVarsData>(ALL_EPISODES, {
     variables: { page: 1 },
     notifyOnNetworkStatusChange: true,
   });
-
-  console.log(error);
 
   const episodes = responseData ? responseData.episodes.results : [];
   const nextPage = responseData ? responseData.episodes.info.next : null;
@@ -103,7 +100,7 @@ export default function EpisodesConent() {
           fullWidth
           sx={{ mt: 2 }}
         >
-          Aplicar
+          Apply
         </Button>
       </Paper>
 
@@ -112,9 +109,10 @@ export default function EpisodesConent() {
       {!loading ? (
         <Box
           sx={{
-            gap: "1rem",
+            gap: "1.5rem",
             gridTemplateColumns: "repeat(auto-fill, minmax(325px, 1fr))",
             display: "grid",
+            mt: 4,
           }}
         >
           {episodes.map((d) => (
@@ -122,9 +120,7 @@ export default function EpisodesConent() {
           ))}
         </Box>
       ) : (
-        <Stack direction="column" alignItems="center" sx={{ my: 2 }}>
-          <CircularProgress color="primary" />
-        </Stack>
+        <LinearProgress sx={{ mt: 5 }} />
       )}
     </Container>
   );
