@@ -15,6 +15,18 @@ export interface EpisodeCharactersResponseData {
   };
 }
 
-export interface EpisodeCharactersVars {
+export interface GetCharacterResponseData {
+  character: Character;
+}
+
+export interface CharactersByIdResponseData {
+  charactersByIds: Character[];
+}
+
+export interface DetailVars {
   id: string;
+}
+
+export interface CharactersDetailVars {
+  ids: string[];
 }
