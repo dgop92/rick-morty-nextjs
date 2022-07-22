@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
@@ -10,6 +9,7 @@ import {
   DetailVars,
 } from "@features/characters/types";
 import { ALL_EPISODE_CHARACTERS } from "@features/characters/queries";
+import { PrimaryTitle } from "@components/PrimaryTitle";
 import { apolloClient } from "@/lib/apolloClient";
 
 interface IParams extends ParsedUrlQuery {
@@ -42,14 +42,7 @@ export const getServerSideProps: GetServerSideProps<
 const EpisodeCharactersPage: NextPage<EpisodeCharactersProps> = ({ characters }) => {
   return (
     <Stack alignItems="center" sx={{ my: 2 }}>
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        sx={{ fontFamily: "titleFontFamily", my: 4, fontWeight: "bold" }}
-      >
-        Episode&apos;s Characters
-      </Typography>
+      <PrimaryTitle sx={{ my: 4 }}>Episode&apos;s Characters</PrimaryTitle>
       <CharacterContainer characters={characters} />
     </Stack>
   );

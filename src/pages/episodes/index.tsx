@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import { PrimaryTitle } from "@components/PrimaryTitle";
 import type { NextPage } from "next";
 import { ClientOnly } from "../../components/ClientOnly";
 import EpisodesConent from "../../features/episodes/EpisodesConent";
@@ -7,14 +7,7 @@ import EpisodesConent from "../../features/episodes/EpisodesConent";
 const EpisodesPage: NextPage = () => {
   return (
     <Stack alignItems="center" sx={{ my: 2 }}>
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        sx={{ fontFamily: "titleFontFamily", my: 4, fontWeight: "bold" }}
-      >
-        Episodes
-      </Typography>
+      <PrimaryTitle>Episodes</PrimaryTitle>
       <ClientOnly>
         <EpisodesConent />
       </ClientOnly>

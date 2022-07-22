@@ -1,35 +1,14 @@
+import { PrimaryButtonLink } from "@components/Button";
+import { PrimaryTitle } from "@components/PrimaryTitle";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import Button, { ButtonProps } from "@mui/material/Button";
 import type { NextPage } from "next";
-import { styled } from "@mui/material/styles";
 import Link from "next/link";
-import React from "react";
-import { BasePrimaryButton } from "../components/Button";
-
-const PrimaryButton = styled(BasePrimaryButton)<ButtonProps>(({ theme }) => ({
-  fontSize: "1rem",
-  padding: `${theme.spacing(1)} ${theme.spacing(4)}`,
-})) as typeof Button;
-
-// eslint-disable-next-line react/display-name
-const PrimaryButtonLink = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ href, ...props }, ref) => {
-    return <PrimaryButton href={href} {...props} ref={ref} />;
-  }
-);
 
 const Home: NextPage = () => {
   return (
     <Stack alignItems="center" justifyContent="center" width="100vw" height="100vh">
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        sx={{ fontFamily: "titleFontFamily", fontWeight: "bold", p: 1 }}
-      >
-        Rick and Morty GraphQL
-      </Typography>
+      <PrimaryTitle>Rick and Morty GraphQL</PrimaryTitle>
       <Typography
         variant="h5"
         align="center"

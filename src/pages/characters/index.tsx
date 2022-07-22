@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import { CharacterContainer } from "@features/characters/components/CharacterContainer";
 import {
   Character,
@@ -8,6 +7,7 @@ import {
   CharactersDetailVars,
 } from "@features/characters/types";
 import { GET_CHARACTERS_BY_IDS } from "@features/characters/queries";
+import { PrimaryTitle } from "@components/PrimaryTitle";
 import { apolloClient } from "@/lib/apolloClient";
 
 interface CharactersPagesProps {
@@ -33,14 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const CharactersPage: NextPage<CharactersPagesProps> = ({ characters }) => {
   return (
     <Stack alignItems="center" sx={{ my: 2 }}>
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        sx={{ fontFamily: "titleFontFamily", my: 4, fontWeight: "bold" }}
-      >
-        Main Characters
-      </Typography>
+      <PrimaryTitle sx={{ my: 4 }}>Main Characters</PrimaryTitle>
       <CharacterContainer characters={characters} />
     </Stack>
   );
