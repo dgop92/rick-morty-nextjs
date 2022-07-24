@@ -39,7 +39,7 @@ export default function EpisodesConent() {
   const prevPage = responseData ? responseData.episodes.info.prev : null;
 
   const onSubmit: SubmitHandler<FilterData> = (data) => {
-    refetch({ filter: { name: data.episodeName, episode: data.season } });
+    refetch({ filter: { name: data.episodeName, episode: data.season }, page: 1 });
   };
 
   const onNewPage = (page: number | null) => {
